@@ -1,0 +1,52 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PM2E2Grupo1"
+             x:Class="PM2E2Grupo1.MainPage"
+             Title="Home">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+
+            <Image Source="iconohome.png" Aspect="AspectFit" HeightRequest="200" />
+
+            <Label Text="Bienvenido"
+                   HorizontalTextAlignment="Center"
+                   FontSize="24"/>
+
+            <StackLayout VerticalOptions="Center" Spacing="20">
+                <Button Text="Nueva Ubicacion"
+                        BackgroundColor="#FF4081"
+                        TextColor="White"
+                        FontSize="20"
+                        CornerRadius="10"
+                        Margin="35,20,35,0"
+                        Clicked="OnNuevaUbicacionClicked"
+                        />
+
+                <Button Text="Ubicaciones"
+                        BackgroundColor="#3F51B5"
+                        TextColor="White"
+                        FontSize="20"
+                        CornerRadius="10"
+                        Margin="35,0,35,0"
+                        Clicked="OnUbicacionesClicked"
+                        />
+
+                <Label Text="Armando Lozano - Fabiana Valladares - Jorge Meraz"
+                       HorizontalTextAlignment="Center"
+                       FontSize="14"
+                       TextColor="#999999"
+                       Margin="0" />
+                <Label Text="Estefany Cruz - Elsy Amaya - Elvin Molina"
+                       HorizontalTextAlignment="Center"
+                       FontSize="14"
+                       TextColor="#999999"
+                       Margin="0" />
+                <Label Text="Luis Rodriguez"
+                       HorizontalTextAlignment="Center"
+                       FontSize="14"
+                       TextColor="#999999"
+                       Margin="0" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

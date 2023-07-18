@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PM2E2Grupo1.Views.UbicacionesPage"
+    Title="Ubicaciones">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <ListView x:Name="ubicacionesListView"
+                      ItemSelected="OnUbicacionSelected"
+                      SelectionMode="Single"
+                      SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
+                      ItemsSource="{Binding ubicaciones}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <Label Text="{Binding titulo}" FontSize="18" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Lat: " FontSize="14" TextColor="#999999" />
+                                    <Label Text="{Binding latitud}" FontSize="14" TextColor="#999999" />
+                                    <Label Text=", Lon: " FontSize="14" TextColor="#999999" />
+                                    <Label Text="{Binding longitud}" FontSize="14" TextColor="#999999" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Actualizar" BackgroundColor="#3F51B5" TextColor="White" />
+                <Button Grid.Column="1" Text="Eliminar" BackgroundColor="#3F51B5" TextColor="White" Clicked="OnEliminarClicked" />
+            </Grid>
+
+            <Button Text="Ver Mapa" BackgroundColor="#3F51B5" TextColor="White" Margin="0,5" Clicked="OnMapaClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

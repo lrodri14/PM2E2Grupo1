@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PM2E2Grupo1"
+             x:Class="PM2E2Grupo1.Views.NuevaUbicacionPage"
+             Title="Agregar Ubicacion">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+
+            <Image Source="imgplaceholder.jpeg" Aspect="AspectFit" HeightRequest="200" x:Name="Foto"/>
+
+            <Label Text="Descripcion" FontSize="16" Margin="0, 20, 0, 0"/>
+            <Entry Placeholder="Ingrese la descripcion" />
+
+            <Label Text="Latitud" FontSize="16" />
+            <Entry Placeholder="Latitud" IsEnabled="False" x:Name="Latitud"/>
+
+            <Label Text="Longitud" FontSize="16" />
+            <Entry Placeholder="Longitud" IsEnabled="False" x:Name="Longitud"/>
+
+            <Label Text="Nota de voz no agregada...." FontSize="16" Margin="0,10,0,15"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Agregar Imagen" BackgroundColor="#3F51B5" TextColor="White" Clicked="tomarFoto"/>
+                <Button Grid.Column="1" Text="Agregar Audio" BackgroundColor="#3F51B5" TextColor="White" />
+            </Grid>
+            <Button Text="Guardar Ubicacion" BackgroundColor="#3F51B5" TextColor="White" Margin="0, 5" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
