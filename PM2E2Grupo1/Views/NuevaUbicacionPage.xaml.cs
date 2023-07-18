@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Plugin.Geolocator;
 using Plugin.Media;
 using Xamarin.Essentials;
@@ -23,18 +25,17 @@ namespace PM2E2Grupo1.Views
             GetUbicacion();
         }
 
-        public String Getimage64()
+        public string Getimage64()
         {
             if (photo != null)
             {
                 using (MemoryStream memory = new MemoryStream())
-
                 {
                     Stream stream = photo.GetStream();
                     stream.CopyTo(memory);
                     byte[] fotobyte = memory.ToArray();
-                    String Base64 = Convert.ToBase64String(fotobyte);
-                    return Base64;
+                    string base64String = Convert.ToBase64String(fotobyte);
+                    return base64String;
                 }
             }
             return null;
@@ -54,6 +55,50 @@ namespace PM2E2Grupo1.Views
                 }
             }
             return null;
+        }
+
+        private async void OnGuardarUbicacionClicked(object sender, EventArgs e)
+        {
+            await AddLugar();
+        }
+
+        private async Task AddLugar()
+        {
+            try
+            {
+                var lugar = new
+                {
+                    descripcion = Descripcion.Text,
+                    latitud = Latitud.Text,
+                    longitud = Longitud.Text,
+                    imagen = Getimage64(),
+                };
+
+                string apiUrl = "http://192.168.2.105:80/Lugares/CreateLugar.php";
+                using (HttpClient client = new HttpClient())
+                {
+                    string jsonData = JsonConvert.SerializeObject(lugar);
+                    StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Lugar creado.");
+                        await DisplayAlert("Aviso", "Lugar Ingresado con Éxito", "Continuar");
+                        await Navigation.PushAsync(new Views.UbicacionesPage());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Lugar no creado.");
+                        await DisplayAlert("Aviso", "Error al Intentar Guardar Lugar", "Salir");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding data: {ex.Message}");
+            }
         }
 
         //private async void guardar(object sender, EventArgs e)

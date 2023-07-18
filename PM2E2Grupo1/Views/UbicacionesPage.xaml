@@ -33,7 +33,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Text="Actualizar" BackgroundColor="#3F51B5" TextColor="White" />
+                <Button Grid.Column="0" Text="Actualizar" BackgroundColor="#3F51B5" TextColor="White" Clicked="OnActualizarUbicacionClicked" />
                 <Button Grid.Column="1" Text="Eliminar" BackgroundColor="#3F51B5" TextColor="White" Clicked="OnEliminarClicked" />
             </Grid>
 

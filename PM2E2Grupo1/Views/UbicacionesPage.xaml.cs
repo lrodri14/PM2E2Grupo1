@@ -82,6 +82,20 @@ namespace PM2E2Grupo1.Views
             }
         }
 
+        public async void OnActualizarUbicacionClicked(object sender, EventArgs e)
+        {
+            if (selectedLocation == null)
+            {
+                Console.WriteLine("Error: No se ha seleccionado una ubicación válida para actualizar.");
+                return;
+            }
+
+            // Pass the selected location's ID to the ActualizarUbicacionPage
+            int lugarId = selectedLocation.Id;
+            await Navigation.PushAsync(new ActualizarUbicacionPage(lugarId));
+        }
+
+
         private async void OnEliminarClicked(object sender, EventArgs e)
         {
             if (selectedLocation == null)
@@ -118,6 +132,7 @@ namespace PM2E2Grupo1.Views
             {
                 Console.WriteLine($"Error deleting data: {ex.Message}");
             }
+
         }
 
 

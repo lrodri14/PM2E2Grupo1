@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PM2E2Grupo1"
-             x:Class="PM2E2Grupo1.Views.NuevaUbicacionPage"
-             Title="Agregar Ubicacion">
+             x:Class="PM2E2Grupo1.Views.ActualizarUbicacionPage"
+             Title="Actualizar Ubicacion">
     <ContentPage.Content>
         <StackLayout Padding="20">
 
@@ -18,16 +18,19 @@
             <Label Text="Longitud" FontSize="16" />
             <Entry Placeholder="Longitud" IsEnabled="False" x:Name="Longitud"/>
 
-            <Label Text="Nota de voz no agregada...." FontSize="16" Margin="0,10,0,15"/>
+            <Label x:Name="AudioStatusLabel" FontSize="16" Text="Nota de voz no agregada..." Margin="0,10,0,15"/>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Text="Agregar Imagen" BackgroundColor="#3F51B5" TextColor="White" Clicked="tomarFoto"/>
+                <Button Grid.Column="0" Text="Agregar Imagen" BackgroundColor="#3F51B5" TextColor="White" Clicked="tomarFoto" />
                 <Button Grid.Column="1" Text="Agregar Audio" BackgroundColor="#3F51B5" TextColor="White" />
             </Grid>
-            <Button Text="Guardar Ubicacion" BackgroundColor="#3F51B5" TextColor="White" Margin="0, 5" Clicked="OnGuardarUbicacionClicked"/>
+
+            <Button Text="Escuchar Nota de Voz" BackgroundColor="#3F51B5" TextColor="White" Margin="0, 5"/>
+            <Button Text="Actualizar Ubicacion" BackgroundColor="#3F51B5" TextColor="White" Margin="0, 5" Clicked="OnGuardarUbicacionClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
